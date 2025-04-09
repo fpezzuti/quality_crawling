@@ -1,0 +1,66 @@
+# config.yaml
+random_seed: 42
+paths:
+  data_dir: "./../../data/"
+  log_dir: "./../../data/outputs/"
+  runs_dir: "./../../data/runs/"
+  qrels_dir: "./../../data/qrels/"
+  queries_dir: "./../../data/queries/"
+  index_dir: "./../../data/indexes/"
+  downloaded_pages_dir: "./../../data/outputs/downloads/"
+  downloaded_pages_fprefix: "downloaded_pages"
+  plots_dir: "./../../data/plots/wows2025/"
+evaluation_benchmarks:
+  msmarco-ws:
+    run_file: "msmarco-ws.run"
+    qrels_file: "cleaned-msmarco-ws-qrels.tsv"
+    queries_file: "cleaned-msmarco-ws-queries.tsv"
+  rq:
+    run_file: "rq.run"
+    qrels_file: "rq-qrels.tsv"
+    queries_file: "rq-queries.tsv"
+evaluation:
+  metrics:
+   - ndcg@10
+   - mrr@10
+   - r@100
+  pvalue: 0.001
+collections:
+  cw22b:
+    name: "cw22b"
+    inlinks_dir: "./../cw22/inlink/en/en00/"
+    outlinks_dir: "./../cw22/outlink/en/en00/"
+    url2docids_fpath: "./../../data/collections/cw22/url2docid/url2docid_txt_cleaned.dat"
+    seeds_url2docids_fpath: "./../../data/collections/cw22/url2docid/url2docid_txt_cleaned.dat"
+    init_seeds_fpath:
+      random: "./../../data/collections/cw22/seeds/50kRseeds.txt" 
+    texts_dir: "./../cw22/txt/en/en00/"
+    text_key: "Clean-Text"
+orchestrator:
+  seen_urls_type: "bitarray"
+  seeds_strategy: "list"
+  frontier_type: "quality"
+  num_seed_urls: 100_000
+  max_pages: -1
+  verbose: True
+  save_every_n_pages: 1000000
+  updates_enabed: false
+  experiment_name: "experiment_0"
+indexer:
+  verbose: True
+  verbosity: 2
+  topk: 100
+  experiment_name: "experiment_0"
+  period: 10000000
+  batch_size: 150_000
+  threads: 16
+qscorer:
+  checkpoints:
+    qt5-tiny:
+      cw22b: 'hf:pyterrier-quality/qt5-tiny.cw22b-en.cache'
+    qt5-small:
+      cw22b: 'hf:pyterrier-quality/qt5-small-maxp.cw22b-en.cache'
+    qt5-small-ft:
+      cw22b: 'hf:macavaney/cw22b-en.qt5-small-msw25.cache'
+    qt5-base:
+      cw22b: 'hf:pyterrier-quality/qt5-base.cw22b-en.cache'

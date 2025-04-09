@@ -1,0 +1,12 @@
+__pycache__/
+.Python
+build/
+MANIFEST
+.DS_STORE
+/data/
+plots/
+*.run
+*.tsv
+*.csv
+*.txt
+*.log
