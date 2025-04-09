@@ -1,6 +1,6 @@
 # Document Quality Scoring for Web Crawling
 
-This repository contains the source code used for the experiments presented in the paper "Document Quality Scoring for Web Crawling" by Francesca Pezzuti, Ariane Mueller, Sean MacAvaney and Nicola Tonellotto, accepted for publication at WOWS, 2025.
+This repository contains the source code used for the experiments presented in the paper "Document Quality Scoring for Web Crawling" by Francesca Pezzuti, Ariane Mueller, Sean MacAvaney and Nicola Tonellotto, accepted for publication at WOWS2025.
 
 ## Credits
 Please, considering citing our paper if you use this code, or a modified version of it.
